@@ -1,0 +1,10 @@
+<ehcache>
+    <cache name="ID_THEFT"
+           maxBytesLocalHeap="5000000"
+           eternal="false"
+           timeToIdleSeconds="480000"
+           overflowToDisk="false"
+           diskPersistent="false"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LRU"/>
+</ehcache>
