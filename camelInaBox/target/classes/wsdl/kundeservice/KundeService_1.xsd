@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfServiceenumvalues" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/WcfServiceenumvalues">
+  <xs:complexType name="Kunde">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="tns:KundeType"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Kunde" nillable="true" type="tns:Kunde"/>
+  <xs:simpleType name="KundeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Privat"/>
+      <xs:enumeration value="Commercial"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="KundeType" nillable="true" type="tns:KundeType"/>
+  <xs:complexType name="CompositeType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType"/>
+</xs:schema>

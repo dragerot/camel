@@ -21,6 +21,10 @@ import javax.jws.WebService;
 public interface CacheTest {
    @WebResult(name = "Response")
    @WebMethod(operationName = "Run")
-   Response Run(@WebParam(name = "Request")Request request) throws BusinessFault,SystemFault;   
+   Response Run(@WebParam(name = "Request")Request request) throws BusinessFault,SystemFault; 
+   
+   @WebResult(name = "Response")
+   @WebMethod(operationName = "Ping")
+   String Ping();
 }
 

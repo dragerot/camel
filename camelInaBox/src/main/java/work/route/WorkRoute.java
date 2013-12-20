@@ -6,6 +6,8 @@ package work.route;
 
 import common.fault.BusinessFault;
 import common.fault.SystemFault;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import work.handler.HandleCache;
 import work.handler.IdTheftCache;
@@ -33,6 +35,14 @@ public class WorkRoute extends RouteBuilder  {
                 to("log:Entered CamelInaBox").
                 recipientList(simple("direct:${header.operationName}"));  
        
+        from("direct:Ping").
+                process(new Processor() {
+
+             public void process(Exchange exchng) throws Exception {
+                 exchng.getOut().setBody("Ok");
+             }
+         }).end();
+                 
         
         from("direct:Run").
                 bean(IdTheftCache.class,"IdentificationIdTheftValidation").
