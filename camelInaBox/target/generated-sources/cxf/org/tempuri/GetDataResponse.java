@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "GetDataResponse")
 public class GetDataResponse {
 
-    @XmlElementRef(name = "GetDataResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "GetDataResult", namespace = "http://tempuri.org/", type = JAXBElement.class)
     protected JAXBElement<String> getDataResult;
 
     /**
@@ -59,7 +59,7 @@ public class GetDataResponse {
      *     
      */
     public void setGetDataResult(JAXBElement<String> value) {
-        this.getDataResult = value;
+        this.getDataResult = ((JAXBElement<String> ) value);
     }
 
 }

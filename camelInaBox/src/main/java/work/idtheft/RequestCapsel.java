@@ -7,11 +7,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
+import org.joda.time.DateTime;
 
 public class RequestCapsel implements java.io.Serializable {
     long periodeSeconds = 0;
     int amountsHitsInPeriode = 0;
-    List<Long> listOfHits = null; 
+    List<DateTime> listOfHits = null; 
     List<String> datoFormattedHits =null; 
     boolean karantene = false;
     
@@ -19,7 +20,7 @@ public class RequestCapsel implements java.io.Serializable {
      * Constructor
      */
     public RequestCapsel(long periodeSeconds, int amountsHitsInPeriode) {
-        listOfHits = new ArrayList<Long>();
+        listOfHits = new ArrayList<DateTime>();
         datoFormattedHits = new ArrayList<String>();
         this.setPeriodeSeconds(periodeSeconds);
         this.setAmountsHitsInPeriode(amountsHitsInPeriode);
@@ -42,15 +43,15 @@ public class RequestCapsel implements java.io.Serializable {
     }
 
     public void NewHit() {
-        listOfHits.add(System.nanoTime());
+        listOfHits.add(DateTime.now());
         datoFormattedHits.add(getCurrentDate());
     }
 
-    public List<Long> getList() {
+    public List<DateTime> getList() {
         return listOfHits;
     }
 
-    public void setList(List<Long> list) {
+    public void setList(List<DateTime> list) {
         listOfHits = list;
     }
 

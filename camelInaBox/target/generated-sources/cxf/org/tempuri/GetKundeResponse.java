@@ -36,7 +36,7 @@ import org.datacontract.schemas._2004._07.wcfserviceenumvalues.Kunde;
 @XmlRootElement(name = "getKundeResponse")
 public class GetKundeResponse {
 
-    @XmlElementRef(name = "getKundeResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "getKundeResult", namespace = "http://tempuri.org/", type = JAXBElement.class)
     protected JAXBElement<Kunde> getKundeResult;
 
     /**
@@ -60,7 +60,7 @@ public class GetKundeResponse {
      *     
      */
     public void setGetKundeResult(JAXBElement<Kunde> value) {
-        this.getKundeResult = value;
+        this.getKundeResult = ((JAXBElement<Kunde> ) value);
     }
 
 }

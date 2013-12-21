@@ -36,7 +36,7 @@ import org.datacontract.schemas._2004._07.wcfserviceenumvalues.CompositeType;
 @XmlRootElement(name = "GetDataUsingDataContractResponse")
 public class GetDataUsingDataContractResponse {
 
-    @XmlElementRef(name = "GetDataUsingDataContractResult", namespace = "http://tempuri.org/", type = JAXBElement.class, required = false)
+    @XmlElementRef(name = "GetDataUsingDataContractResult", namespace = "http://tempuri.org/", type = JAXBElement.class)
     protected JAXBElement<CompositeType> getDataUsingDataContractResult;
 
     /**
@@ -60,7 +60,7 @@ public class GetDataUsingDataContractResponse {
      *     
      */
     public void setGetDataUsingDataContractResult(JAXBElement<CompositeType> value) {
-        this.getDataUsingDataContractResult = value;
+        this.getDataUsingDataContractResult = ((JAXBElement<CompositeType> ) value);
     }
 
 }
