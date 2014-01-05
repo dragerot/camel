@@ -8,45 +8,67 @@ import common.fault.BusinessFault;
 import common.fault.SystemFault;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.builder.RouteBuilder;
-import work.handler.HandleCache;
+import work.handler.GetCurrencyOnEmailHandler;
 import work.handler.IdTheftCache;
-import work.service.CacheTest;
+import work.service.WorkServices;
 
 /**
  *
  * @author tg3
  */
-public class WorkRoute extends RouteBuilder  {
+public class WorkRoute extends RouteBase {
 
     /* webshop-travel
      http://localhost:8080/camelInaBox/webservices/cachetest?wsdl
      */
-    private String uri = "cxf:/cachetest?serviceClass=" + CacheTest.class.getName();
-  
-     
+    private String uri = "cxf:/workservices?serviceClass=" + WorkServices.class.getName();
+
     @Override
     public void configure() throws Exception {
-         onException(SystemFault.class, BusinessFault.class).stop();
-    
-         interceptFrom("direct:*").to("log:CamelInaBox:IN");
-    
-         from(uri).
-                to("log:Entered CamelInaBox").
-                recipientList(simple("direct:${header.operationName}"));  
-       
-        from("direct:Ping").
-                process(new Processor() {
+        super.configure();
+        onException(SystemFault.class, BusinessFault.class).stop();
 
-             public void process(Exchange exchng) throws Exception {
-                 exchng.getOut().setBody("Ok");
-             }
-         }).end();
-                 
-        
-        from("direct:Run").
-                bean(IdTheftCache.class,"IdentificationIdTheftValidation").
+        //interceptFrom("direct:*").to("log:CamelInaBox:IN");
+
+        from(uri).
+                to("log:Entered CamelInaBox").
+                recipientList(simple("direct:${header.operationName}"));
+
+        from("direct:CacheTest").
+                bean(IdTheftCache.class, "IdentificationIdTheftValidation").
                 to("log:END").end();
-                }
-    
+
+        from("direct:getCurrencyOnEmail").to("direct:csl:getCurrencyOnEmail").end();
+
+
+        from("direct:Ping").
+                //to("direct:esl:gmail").
+                process(new Processor() {
+            public void process(Exchange exchng) throws Exception {
+                exchng.getOut().setBody("Ok");
+            }
+        }).end();
+
+        from("direct:csl:getCurrencyOnEmail").
+                bean(GetCurrencyOnEmailHandler.class, "sendemail").
+                /*
+                process(new Processor() {
+            public void process(Exchange exchng) throws Exception {
+               exchng.getIn().getHeaders().clear(); //DETTE ER VIKTIG ELLERS SÅ tar den med all header info (xml dokument!)
+               exchng.getIn().setHeader("subject", constant("Dette er en test"));
+               exchng.getIn().setHeader("from", constant("dragerot@gmail.com")); //?to=dragerot@gmail.com&from=tg3@ifint.biz
+               exchng.getIn().setHeader("to", constant("tore.gard.andersen@if.no"));
+               exchng.getIn().setHeader("contentType", constant("text/html")); // text/html text/plain
+               exchng.getIn().setHeader("body", constant("Heisan")); 
+               exchng.getIn().setHeader("alternativeBodyHeader","CamelMailAlternativeBody"); //MAIL_ALTERNATIVE_BODY 
+               exchng.getIn().setHeader("CamelMailAlternativeBody","ALLE DER UTE, HALLO alterantiv");
+               exchng.getIn().setBody("<html><body>ALLE DER UTE, HALLO </body></html>", String.class);
+              }             
+        })*/
+          //to("smtp:mock").//to("smtp://smtp.ifint.biz").
+          to("direct:esl:getCurrencyOnEmail");
+           //.to("gmail://dragerot@gmail.com").
+
+
+    }
 }

@@ -18,10 +18,12 @@
             <value>classpath:environment.properties</value>
         </property>
     </bean>
-    <bean id="workroute" class="work.route.WorkRoute"/>
+    <bean id="workroute" class="work.route.WorkRoute"/> 
+    <bean id="emailroute" class="work.route.WorkRouteSendEmail"/>
 
     <camelContext xmlns="http://camel.apache.org/schema/spring" id="camel">
         <routeBuilder ref="workroute"/>
+        <routeBuilder ref="emailroute"/>
     </camelContext>
 
     <cxf:cxfEndpoint id="kundeService"
@@ -30,7 +32,7 @@
                      loggingFeatureEnabled="true"/>
 
    
-                     <bean name="logFormatter" class="common.log.WebshopLogFormatter"/>
+    <bean name="logFormatter" class="common.log.WebshopLogFormatter"/>
     
     <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"
           p:cacheManager-ref="ehcache"/>
