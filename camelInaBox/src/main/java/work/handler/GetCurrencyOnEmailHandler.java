@@ -16,12 +16,14 @@ import work.currency.ResponseStatusType;
  */
 public class GetCurrencyOnEmailHandler {
 
-   
+    private @Value("${email.host}")
+    String emailhost;
 
     public void sendemail(Exchange exchng) throws Exception {
         exchng.getIn().getHeaders().clear(); //DETTE ER VIKTIG ELLERS SÅ tar den med all header info (xml dokument!)
         //exchng.getIn().setHeader("email.host",EMAIL_HOST);
-        exchng.getIn().setHeader("subject","Dette er en test");
+        exchng.getIn().setHeader("emailhost", emailhost);
+        exchng.getIn().setHeader("subject", "Dette er en test");
         exchng.getIn().setHeader("from", "dragerot@gmail.com"); //?to=dragerot@gmail.com&from=tg3@ifint.biz
         exchng.getIn().setHeader("to", "tore.gard.andersen@if.no");
         exchng.getIn().setHeader("contentType", "text/html"); // text/html text/plain

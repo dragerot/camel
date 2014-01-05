@@ -64,8 +64,8 @@ public class WorkRoute extends RouteBase {
                exchng.getIn().setHeader("CamelMailAlternativeBody","ALLE DER UTE, HALLO alterantiv");
                exchng.getIn().setBody("<html><body>ALLE DER UTE, HALLO </body></html>", String.class);
               }             
-        })*/
-          //to("smtp:mock").//to("smtp://smtp.ifint.biz").
+        })*/ 
+          recipientList().expression(simple("smtp://${in.header.emailhost}")). //recipientList().el("smtp://"+simple("${in.header.emailhost}")//to("smtp://"+simple("${in.header.emailhost}")). //to("smtp:mock").//to("smtp://smtp.ifint.biz").
           to("direct:esl:getCurrencyOnEmail");
            //.to("gmail://dragerot@gmail.com").
 
