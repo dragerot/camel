@@ -4,6 +4,8 @@
  */
 package domain.insuranceParty;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -22,10 +24,14 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class InsurancePartyLookup {
     @XmlElement(name = "Ssn")
+    @NotNull
+     @Size(min = 11, max =11 )
     private String ssn;
     @XmlElement(name = "GivenName")
+    @NotNull
     private String givenName;
     @XmlElement(name = "FamilyName")
+    @NotNull
     private String familyName;
     
     public String getSsn() {

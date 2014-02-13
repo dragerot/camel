@@ -8,6 +8,7 @@ import common.fault.BusinessFault;
 import common.fault.SystemFault;
 import org.apache.camel.builder.RouteBuilder;
 import work.handler.GetCurrencyOnEmailHandler;
+import work.handler.sendMessageHandler;
 /**
  *
  * @author TG3
@@ -24,6 +25,8 @@ public class WorkRouteSendEmail extends RouteBase {
         from("direct:esl:getCurrencyOnEmail").
         bean(GetCurrencyOnEmailHandler.class,"CurrencyResponse");
         
+        from("direct:esl:sendMessage").
+        bean(sendMessageHandler.class,"sendMessage");   
     }
     
 }

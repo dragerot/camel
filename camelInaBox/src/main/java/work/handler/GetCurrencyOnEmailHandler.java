@@ -5,7 +5,6 @@
 package work.handler;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.language.Constant;
 import org.springframework.beans.factory.annotation.Value;
 import work.currency.CurrencyResponse;
 import work.currency.ResponseStatusType;
@@ -18,19 +17,32 @@ public class GetCurrencyOnEmailHandler {
 
     private @Value("${email.host}")
     String emailhost;
+     private @Value("${creditcheck.recipient}")
+    String recipient;
+      private @Value("${creditcheck.sender}")
+    String sender;
+       private @Value("${creditcheck.subject}")
+    String subject;
+        private @Value("${creditcheck.prefix}")
+    String prefix;
 
-    public void sendemail(Exchange exchng) throws Exception {
-        exchng.getIn().getHeaders().clear(); //DETTE ER VIKTIG ELLERS SÅ tar den med all header info (xml dokument!)
-        //exchng.getIn().setHeader("email.host",EMAIL_HOST);
-        exchng.getIn().setHeader("emailhost", emailhost);
-        exchng.getIn().setHeader("subject", "Dette er en test");
-        exchng.getIn().setHeader("from", "dragerot@gmail.com"); //?to=dragerot@gmail.com&from=tg3@ifint.biz
-        exchng.getIn().setHeader("to", "tore.gard.andersen@if.no");
-        exchng.getIn().setHeader("contentType", "text/html"); // text/html text/plain
-        exchng.getIn().setHeader("body", "Heisan");
-        exchng.getIn().setHeader("alternativeBodyHeader", "CamelMailAlternativeBody"); //MAIL_ALTERNATIVE_BODY 
-        exchng.getIn().setHeader("CamelMailAlternativeBody", "ALLE DER UTE, HALLO alterantiv");
-        exchng.getIn().setBody("<html><body>ALLE DER UTE, HALLO </body></html>", String.class);
+    public void valideringAnalyse(Exchange exchange) throws Exception {
+        System.out.println("E");
+    }   
+    
+    public void sendemail(Exchange exchange) throws Exception {
+        //exchange.getIn().getHeaders().clear(); //DETTE ER VIKTIG ELLERS SÅ tar den med all header info (xml dokument!)
+        ////exchng.getIn().setHeader("email.host",EMAIL_HOST);
+        //EmailRequest  emailRequest=exchange.getIn().getBody(EmailRequest.class);
+        exchange.getIn().setHeader("emailhost", emailhost);
+        exchange.getIn().setHeader("subject", subject);
+        exchange.getIn().setHeader("from", sender); //?to=dragerot@gmail.com&from=tg3@ifint.biz
+        exchange.getIn().setHeader("to", recipient);
+        exchange.getIn().setHeader("contentType", "text/html"); // text/html text/plain
+        exchange.getIn().setHeader("body", "Heisan");
+        exchange.getIn().setHeader("alternativeBodyHeader", "CamelMailAlternativeBody"); //MAIL_ALTERNATIVE_BODY 
+        exchange.getIn().setHeader("CamelMailAlternativeBody", "ALLE DER UTE, HALLO alterantiv");
+        exchange.getIn().setBody("<html><body>ALLE DER UTE, HALLO </body></html>", String.class);
     }
 
     public void CurrencyRequest(Exchange exchange) throws Exception {
