@@ -20,10 +20,12 @@
     </bean>
     <bean id="workroute" class="work.route.WorkRoute"/> 
     <bean id="emailroute" class="work.route.WorkRouteSendEmail"/>
+    <bean id="workRouteHouse" class="work.route.WorkRouteHouse"/>
 
     <camelContext xmlns="http://camel.apache.org/schema/spring" id="camel">
         <routeBuilder ref="workroute"/>
         <routeBuilder ref="emailroute"/>
+        <routeBuilder ref="workRouteHouse"/>
     </camelContext>
 
     <cxf:cxfEndpoint id="kundeService"
@@ -39,4 +41,32 @@
     <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
           p:configLocation="classpath:ehcache.xml"/>
   
-    </beans>
+    <!-- this is the JDBC data source for Oracle 
+    class="oracle.jdbc.pool.OracleDataSource" destroy-method="close" lazy-init="true"
+    -->
+    <!--
+          <bean id="F2ORAdataSource" 
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+        <property name="url" value="jdbc:oracle:thin:@${db.F2ORA.host}" />
+        <property name="username" value="${db.F2ORA.username}" />
+        <property name="password" value="${db.F2ORA.password}" />
+    </bean>
+    -->    
+    <bean id="F2ORAdataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="url" value="jdbc:oracle:thin:@${db.F2ORA.host}" />
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+        <property name="username" value="${db.F2ORA.username}" />
+        <property name="password" value="${db.F2ORA.password}" />
+        <property name="removeAbandoned" value="true"/>
+        <property name="initialSize" value="20" />
+        <property name="maxActive" value="30" />
+    </bean>
+        
+    <!-- configure the Camel SQL component to use the JDBC data source -->
+    <bean id="sql" class="org.apache.camel.component.sql.SqlComponent">
+        <property name="dataSource" ref="F2ORAdataSource"/>
+    </bean>
+
+       
+</beans>

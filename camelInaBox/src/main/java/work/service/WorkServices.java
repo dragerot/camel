@@ -1,10 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- *//*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package work.service;
 
 import common.fault.BusinessFault;
@@ -15,12 +8,14 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 import work.currency.CurrencyRequest;
 import work.currency.CurrencyResponse;
+import work.db.HouseRequest;
+import work.db.HouseResponsList;
 import work.db4o.Db4oRequest;
 import work.db4o.Db4oResponse;
 import work.domain.message.Request;
 import work.domain.message.Response;
-import work.reportendpoint.SendMessageRequest;
 import work.reportendpoint.MeldingRetur;
+import work.reportendpoint.SendMessageRequest;
 
 /**
  *
@@ -51,6 +46,9 @@ public interface WorkServices {
    @WebResult(name = "MeldingRetur")
    @WebMethod(operationName = "sendMessage")
    public MeldingRetur sendMessage(@WebParam(name = "sendMessageRequest") SendMessageRequest sendMessageRequest);
-        
+   
+   @WebResult(name = "HouseResponsList")
+   @WebMethod(operationName = "getHouse")
+   public HouseResponsList getHouse(@WebParam(name = "HouseRequest") HouseRequest houseRequest);
 }
 

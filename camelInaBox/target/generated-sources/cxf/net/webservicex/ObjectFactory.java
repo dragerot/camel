@@ -34,19 +34,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ConversionRateResponse }
-     * 
-     */
-    public ConversionRateResponse createConversionRateResponse() {
-        return new ConversionRateResponse();
-    }
-
-    /**
      * Create an instance of {@link ConversionRate }
      * 
      */
     public ConversionRate createConversionRate() {
         return new ConversionRate();
+    }
+
+    /**
+     * Create an instance of {@link ConversionRateResponse }
+     * 
+     */
+    public ConversionRateResponse createConversionRateResponse() {
+        return new ConversionRateResponse();
     }
 
     /**
