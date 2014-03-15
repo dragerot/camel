@@ -26,9 +26,9 @@ import org.datacontract.schemas._2004._07.wcfserviceenumvalues.Kunde;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _GetDataUsingDataContractResponseGetDataUsingDataContractResult_QNAME = new QName("http://tempuri.org/", "GetDataUsingDataContractResult");
     private final static QName _GetKundeResponseGetKundeResult_QNAME = new QName("http://tempuri.org/", "getKundeResult");
     private final static QName _GetDataResponseGetDataResult_QNAME = new QName("http://tempuri.org/", "GetDataResult");
-    private final static QName _GetDataUsingDataContractResponseGetDataUsingDataContractResult_QNAME = new QName("http://tempuri.org/", "GetDataUsingDataContractResult");
     private final static QName _GetDataUsingDataContractComposite_QNAME = new QName("http://tempuri.org/", "composite");
 
     /**
@@ -39,11 +39,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetKundeResponse }
+     * Create an instance of {@link GetKunde }
      * 
      */
-    public GetKundeResponse createGetKundeResponse() {
-        return new GetKundeResponse();
+    public GetKunde createGetKunde() {
+        return new GetKunde();
     }
 
     /**
@@ -52,6 +52,14 @@ public class ObjectFactory {
      */
     public GetData createGetData() {
         return new GetData();
+    }
+
+    /**
+     * Create an instance of {@link GetKundeResponse }
+     * 
+     */
+    public GetKundeResponse createGetKundeResponse() {
+        return new GetKundeResponse();
     }
 
     /**
@@ -71,19 +79,20 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetKunde }
-     * 
-     */
-    public GetKunde createGetKunde() {
-        return new GetKunde();
-    }
-
-    /**
      * Create an instance of {@link GetDataUsingDataContract }
      * 
      */
     public GetDataUsingDataContract createGetDataUsingDataContract() {
         return new GetDataUsingDataContract();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link CompositeType }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetDataUsingDataContractResult", scope = GetDataUsingDataContractResponse.class)
+    public JAXBElement<CompositeType> createGetDataUsingDataContractResponseGetDataUsingDataContractResult(CompositeType value) {
+        return new JAXBElement<CompositeType>(_GetDataUsingDataContractResponseGetDataUsingDataContractResult_QNAME, CompositeType.class, GetDataUsingDataContractResponse.class, value);
     }
 
     /**
@@ -102,15 +111,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetDataResult", scope = GetDataResponse.class)
     public JAXBElement<String> createGetDataResponseGetDataResult(String value) {
         return new JAXBElement<String>(_GetDataResponseGetDataResult_QNAME, String.class, GetDataResponse.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CompositeType }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "GetDataUsingDataContractResult", scope = GetDataUsingDataContractResponse.class)
-    public JAXBElement<CompositeType> createGetDataUsingDataContractResponseGetDataUsingDataContractResult(CompositeType value) {
-        return new JAXBElement<CompositeType>(_GetDataUsingDataContractResponseGetDataUsingDataContractResult_QNAME, CompositeType.class, GetDataUsingDataContractResponse.class, value);
     }
 
     /**

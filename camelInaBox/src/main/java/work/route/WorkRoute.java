@@ -29,13 +29,12 @@ public class WorkRoute extends RouteBase {
     public void configure() throws Exception {
         super.configure();
         onException(SystemFault.class, BusinessFault.class).stop();
-
+        
         //interceptFrom("direct:*").to("log:CamelInaBox:IN");
 
         from(uri).
                 to("log:Entered CamelInaBox").
                 recipientList(simple("direct:${header.operationName}"));
-
 
         from("direct:CacheTest").
                 bean(IdTheftCache.class, "IdentificationIdTheftValidation").
@@ -84,6 +83,10 @@ public class WorkRoute extends RouteBase {
         //.to("gmail://dragerot@gmail.com").
 
          from("direct:sendMessage").to("direct:esl:sendMessage").end();
-
+          
+         
+        from("direct:sjekkOmEnumVirker").to("direct:esl:sjekkOmEnumVirker").end();
+               
+         
     }
 }

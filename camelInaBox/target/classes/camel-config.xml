@@ -21,11 +21,13 @@
     <bean id="workroute" class="work.route.WorkRoute"/> 
     <bean id="emailroute" class="work.route.WorkRouteSendEmail"/>
     <bean id="workRouteHouse" class="work.route.WorkRouteHouse"/>
+    <bean id="workRouteSjekkOmEnumVirker" class="work.route.WorkRouteSjekkOmEnumVirker"/>
 
     <camelContext xmlns="http://camel.apache.org/schema/spring" id="camel">
         <routeBuilder ref="workroute"/>
         <routeBuilder ref="emailroute"/>
         <routeBuilder ref="workRouteHouse"/>
+        <routeBuilder ref="workRouteSjekkOmEnumVirker"/>
     </camelContext>
 
     <cxf:cxfEndpoint id="kundeService"

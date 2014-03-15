@@ -37,9 +37,9 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Kunde {
 
-    @XmlElementRef(name = "Id", namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", type = JAXBElement.class)
+    @XmlElementRef(name = "Id", namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", type = JAXBElement.class, required = false)
     protected JAXBElement<String> id;
-    @XmlElementRef(name = "Name", namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", type = JAXBElement.class)
+    @XmlElementRef(name = "Name", namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", type = JAXBElement.class, required = false)
     protected JAXBElement<String> name;
     protected KundeType type;
 
@@ -64,7 +64,7 @@ public class Kunde {
      *     
      */
     public void setId(JAXBElement<String> value) {
-        this.id = ((JAXBElement<String> ) value);
+        this.id = value;
     }
 
     /**
@@ -88,7 +88,7 @@ public class Kunde {
      *     
      */
     public void setName(JAXBElement<String> value) {
-        this.name = ((JAXBElement<String> ) value);
+        this.name = value;
     }
 
     /**

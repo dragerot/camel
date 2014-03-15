@@ -14,6 +14,7 @@ import work.db4o.Db4oRequest;
 import work.db4o.Db4oResponse;
 import work.domain.message.Request;
 import work.domain.message.Response;
+import work.enumtesting.EnumRequest;
 import work.reportendpoint.MeldingRetur;
 import work.reportendpoint.SendMessageRequest;
 
@@ -50,5 +51,9 @@ public interface WorkServices {
    @WebResult(name = "HouseResponsList")
    @WebMethod(operationName = "getHouse")
    public HouseResponsList getHouse(@WebParam(name = "HouseRequest") HouseRequest houseRequest);
+   
+   @WebResult(name = "sjekkOmEnumVirkerRetur")
+   @WebMethod(operationName = "sjekkOmEnumVirker")
+   public boolean sjekkOmEnumVirker(@WebParam(name = "EnumRequest") EnumRequest enumRequest);
 }
 

@@ -38,7 +38,7 @@ public class CompositeType {
 
     @XmlElement(name = "BoolValue")
     protected Boolean boolValue;
-    @XmlElementRef(name = "StringValue", namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", type = JAXBElement.class)
+    @XmlElementRef(name = "StringValue", namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", type = JAXBElement.class, required = false)
     protected JAXBElement<String> stringValue;
 
     /**
@@ -86,7 +86,7 @@ public class CompositeType {
      *     
      */
     public void setStringValue(JAXBElement<String> value) {
-        this.stringValue = ((JAXBElement<String> ) value);
+        this.stringValue = value;
     }
 
 }

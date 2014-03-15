@@ -17,7 +17,12 @@ import work.reportendpoint.SendMessageRequest;
  * @author TG3
  */
 public class sendMessageHandler {
-      public void sendMessage(Exchange exchange) throws Exception {
+      
+     public void pre(Exchange exchange) throws Exception {
+          System.out.println("***Pre***************************************");
+     }
+    
+    public void sendMessage(Exchange exchange) throws Exception {
           System.out.println("*******************KILLROY");
           MeldingRetur meldingRetur=new MeldingRetur();
           SendMessageRequest sendMessageRequest = exchange.getIn().getBody(SendMessageRequest.class);
@@ -46,15 +51,25 @@ public class sendMessageHandler {
           meldingRetur.setResult(className);
           exchange.getIn().setBody(meldingRetur);
       }
-      /*
-      private String findClassName(String value)
-      {
-          String value = "work.reportendpoint.CarReport";
-        String[] _list = className.split("[.]");
-        int a = _list.length;
-        String cmd=_list[a-1];
-        int sss=0;
-        return value;
-      }
-      */
-}
+     
+       public void carReport(Exchange exchange) throws Exception {
+           MeldingRetur meldingRetur=new MeldingRetur();  
+           meldingRetur.setResult("carReport1");
+          exchange.getIn().setBody(meldingRetur);
+    
+       }
+       
+       public void personReport(Exchange exchange) throws Exception {
+             MeldingRetur meldingRetur=new MeldingRetur();  
+           meldingRetur.setResult("personReport2");
+          exchange.getIn().setBody(meldingRetur);
+      
+       }
+       
+        public void a(Exchange exchange) throws Exception {
+             MeldingRetur meldingRetur=new MeldingRetur();  
+           meldingRetur.setResult("a");
+          exchange.getIn().setBody(meldingRetur);
+      
+       }
+    }

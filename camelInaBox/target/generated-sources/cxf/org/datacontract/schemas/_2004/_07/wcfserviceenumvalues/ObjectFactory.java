@@ -27,9 +27,9 @@ public class ObjectFactory {
     private final static QName _KundeType_QNAME = new QName("http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", "KundeType");
     private final static QName _CompositeType_QNAME = new QName("http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", "CompositeType");
     private final static QName _Kunde_QNAME = new QName("http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", "Kunde");
-    private final static QName _CompositeTypeStringValue_QNAME = new QName("http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", "StringValue");
     private final static QName _KundeName_QNAME = new QName("http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", "Name");
     private final static QName _KundeId_QNAME = new QName("http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", "Id");
+    private final static QName _CompositeTypeStringValue_QNAME = new QName("http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", "StringValue");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: org.datacontract.schemas._2004._07.wcfserviceenumvalues
@@ -39,19 +39,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link CompositeType }
-     * 
-     */
-    public CompositeType createCompositeType() {
-        return new CompositeType();
-    }
-
-    /**
      * Create an instance of {@link Kunde }
      * 
      */
     public Kunde createKunde() {
         return new Kunde();
+    }
+
+    /**
+     * Create an instance of {@link CompositeType }
+     * 
+     */
+    public CompositeType createCompositeType() {
+        return new CompositeType();
     }
 
     /**
@@ -85,15 +85,6 @@ public class ObjectFactory {
      * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
      * 
      */
-    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", name = "StringValue", scope = CompositeType.class)
-    public JAXBElement<String> createCompositeTypeStringValue(String value) {
-        return new JAXBElement<String>(_CompositeTypeStringValue_QNAME, String.class, CompositeType.class, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
-     * 
-     */
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", name = "Name", scope = Kunde.class)
     public JAXBElement<String> createKundeName(String value) {
         return new JAXBElement<String>(_KundeName_QNAME, String.class, Kunde.class, value);
@@ -106,6 +97,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", name = "Id", scope = Kunde.class)
     public JAXBElement<String> createKundeId(String value) {
         return new JAXBElement<String>(_KundeId_QNAME, String.class, Kunde.class, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link String }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://schemas.datacontract.org/2004/07/WcfServiceenumvalues", name = "StringValue", scope = CompositeType.class)
+    public JAXBElement<String> createCompositeTypeStringValue(String value) {
+        return new JAXBElement<String>(_CompositeTypeStringValue_QNAME, String.class, CompositeType.class, value);
     }
 
 }
