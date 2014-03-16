@@ -54,7 +54,7 @@ public class WorkRoute extends RouteBase {
                 //to("direct:esl:gmail").
                 process(new Processor() {
             public void process(Exchange exchng) throws Exception {
-                exchng.getOut().setBody("Ok");
+                exchng.getOut().setBody("Ok-autostart");
             }
         }).end();
 

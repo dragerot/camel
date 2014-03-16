@@ -140,6 +140,9 @@
                             <value>file:///${basedir}/src/main/resources/log4j.properties</value>
                         </systemProperty>
                     </systemProperties>
+                    <!-- <daemon>true</daemon> -->
+                      <stopKey>foo</stopKey>
+                     <stopPort>9999</stopPort>
                 </configuration>
             </plugin>
             <plugin>
