@@ -1,2 +1,14 @@
 nbactions.xml
 nb-configuration.xml
+nbactions.xml
+nb-configuration.xml
+# Java
+*.class
+.idea/
+
+# Package Files
+*.jar
+*.war
+*.iml
+*.ucls
+target/
