@@ -12,24 +12,35 @@ import org.apache.log4j.Priority;
 public class NewMain {
    static XStream xStream=null;
    
-   private XStream getXStream(){
-       if(xStream==null) xStream=new XStream();
+   public static XStream getXStream(Object object){
+       if(xStream==null){
+           xStream=new XStream();
+           xStream.alias(object.getClass().getSimpleName(), object.getClass());
+       }
+       
        return xStream;
+   }
+   
+   public static String transformJavaToXML(Object object){
+       return getXStream(object).toXML(object);
    }
    
    public static org.apache.log4j.Logger getLogger(){
        return Logger.getRootLogger();
    }
    
+   public static void log(Object obj){
+       getLogger().log(Priority.INFO, obj);
+   }
+   
    public void run(){
-       Person person=new Person("id","Tore Gard", "Andersen");
-       String xmlPerson=getXStream().toXML(person);
-       getLogger().log(Priority.INFO, person);
+      
    }
    
    public static void main(String[] args) {
-       getLogger().log(Priority.INFO, "Starter");
-       new NewMain().run();
+       NewMain.log("Starter");
+       NewMain.log(NewMain.transformJavaToXML(new Person("id","Tore Gard", "Andersen")));
+       NewMain.log( "Ferdig");
     }
     
 }
