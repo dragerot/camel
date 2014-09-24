@@ -9,6 +9,7 @@
   <name>toregard multiproject</name>
   <modules>
       <module>camelInaBox</module>
+    <module>diverse/JsonLog4JTesting</module>
   </modules>
 
   <properties>

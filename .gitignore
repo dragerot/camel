@@ -12,3 +12,5 @@ nb-configuration.xml
 *.iml
 *.ucls
 target/
+/camelInaBox/target/
+/diverse/JsonLog4JTesting/target/
