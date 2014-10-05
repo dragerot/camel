@@ -5,7 +5,7 @@
 package work.db4o;
 
 /**
- *
+ * test
  * @author TG3
  */
 public class CustomerPersist implements java.io.Serializable {
