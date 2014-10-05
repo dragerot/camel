@@ -3,3 +3,6 @@ nb-configuration.xml
 *.war
 *.jar
 *.class
+target/
+*.iml
+*.ucls
