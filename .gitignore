@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 nbactions.xml
 nb-configuration.xml
 nbactions.xml
@@ -14,3 +15,10 @@ nb-configuration.xml
 target/
 /camelInaBox/target/
 /diverse/JsonLog4JTesting/target/
+=======
+nbactions.xml
+nb-configuration.xml
+*.war
+*.jar
+*.class
+>>>>>>> gitignore lagt til

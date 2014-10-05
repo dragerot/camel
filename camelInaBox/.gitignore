@@ -1,2 +1,5 @@
 nbactions.xml
 nb-configuration.xml
+*.war
+*.jar
+*.class
